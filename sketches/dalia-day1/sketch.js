@@ -11,6 +11,7 @@ let expanding = false; // Flag to track if the shape is expanding
 let borderRadius = 9999;
 let mySound;
 let mySound2;
+let mySound3;
 let played = false;
 let finished = false
 
@@ -19,6 +20,7 @@ window.preload = function () {
   soundFormats('mp3', 'ogg', 'wav');
   mySound = loadSound("sounds/son1.wav")
   mySound2 = loadSound("sounds/son2.wav")
+  mySound3 = loadSound("sounds/son3.wav")
 
 }
 
@@ -67,6 +69,7 @@ window.draw = function () {
       shapeSizeY += 5//(windowWidth - shapeSize) * 0.1;
 
     } else {
+
 
 
       // For rectangle or when not expanding, keep the size constant at 100
@@ -123,10 +126,12 @@ window.draw = function () {
   //console.log("x: " + realShapeSizeX + " radius " + borderRadius + "objsize " + objSize)
 
   if (realShapeSizeX <= objSize + 1 && borderRadius == 0 && !finished) {
+
     finished = true
     sendSequenceNextSignal()
     noLoop()
     console.log("done");
+
 
   }
 
@@ -157,7 +162,6 @@ window.mousePressed = function () {
 };
 
 window.mouseReleased = function () {
-
   // expanding = false; // Set expanding flag to false when mouse is released
   //  targetSize = 300; // Set the target size to 100 upon releasing the mouse
   //  shapeType = 'circle'; // Reset shape type to circle
